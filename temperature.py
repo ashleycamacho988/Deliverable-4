@@ -113,4 +113,31 @@ class Temperature:
             return f"{self.value:.2f} K" 
     
         return f"{self.value:.2f} °{self.unit}"
+
+    # The comparison methods
+    def __eq__(self, other: object) -> bool | NotImplementedType:
+        """Checks if 2 temperatures are equal"""
+        if not isinstance(other, Temperature):
+            return NotImplemented
+    
+        return isclose(
+            self.to_kelvin(),
+            other.to_kelvin(),
+            rel_tol=0.0,
+            abs_tol=self.TOLERANCE
+        )
+    
+    def __ne__(self, other: object) -> bool | NotImplementedType:
+        """Checks if 2 temperatures are not equal"""
+        if not isinstance(other, Temperature):
+            return NotImplemented
+    
+        return not self == other
+    
+    def __lt__(self, other: object) -> bool | NotImplementedType:
+        """Checks if the temperature is lower than another"""
+        if not isinstance(other, Temperature):
+            return NotImplemented
+    
+        return self.to_kelvin() < other.to_kelvin() and self != other
         
