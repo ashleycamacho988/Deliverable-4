@@ -42,4 +42,63 @@ class Temperature:
     def unit(self) -> str:
         """Returns the read-only temperature unit"""
         return self._unit 
+
+    # The conversion methods
+    def to_celsius(self) -> float:
+        """Converts the temperature to Celsius"""
+        if self.unit == "K": # From Kelvin
+            return self.value - 273.15
+    
+        if self.unit == "F": # From Fahrenheit
+            return (self.value - 32) * 5 / 9
+    
+        return self.value
+    
+    def to_fahrenheit(self) -> float:
+        """Converts the temperature to Fahrenheit"""
+        if self.unit == "C": # From Celsius
+            return self.value * 9 / 5 + 32
+    
+        if self.unit == "K": # From Kelvin
+            return (self.value - 273.15) * 9 / 5 + 32
+    
+        return self.value
+    
+    def to_kelvin(self) -> float:
+        """Converts the temperature to Kevin"""
+        if self.unit == "C": # From Celsius
+            return self.value + 273.15
+    
+        if self.unit == "F": # From Fahrenheit
+            return (self.value - 32) * 5 / 9 + 273.15
+    
+        return self.value
+    
+    def convert_to(self, target_unit: str) -> "Temperature":
+        """Returns a new temperature object in the the target unit"""
+        target_unit = target_unit.upper()
+    
+        # Converts the temperature to the requested unit
+        if target_unit == "C":
+            value = self.to_celsius()
+            minimum = -273.15
+    
+        elif target_unit == "F":
+            value = self.to_fahrenheit()
+            minimum = -459.67
+    
+        elif target_unit == "K":
+            value = self.to_kelvin()
+            minimum = 0.0
+    
+        else:
+            raise ValueError("Invalid target temperature unit")
+    
+        # Prevents rounding errors below absolute zero
+        if isclose(
+            value, minimum, rel_tol=0.0, abs_tol=self.TOLERANCE
+            ) and value < minimum:
+            value = minimum
+    
+        return Temperature(value, target_unit)
         
