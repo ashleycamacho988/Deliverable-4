@@ -31,3 +31,15 @@ class Temperature:
         # Stores the protected attributes
         self._value = float(value)
         self._unit = unit
+
+    # The read-only attributes
+     @property
+    def value(self) -> float:
+        """Returns the read-only temperature value"""
+        return self._value
+        
+    @property
+    def unit(self) -> str:
+        """Returns the read-only temperature unit"""
+        return self._unit 
+        
