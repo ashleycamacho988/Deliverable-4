@@ -33,7 +33,7 @@ class Temperature:
         self._unit = unit
 
     # The read-only attributes
-     @property
+    @property
     def value(self) -> float:
         """Returns the read-only temperature value"""
         return self._value
