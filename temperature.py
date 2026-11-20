@@ -101,4 +101,16 @@ class Temperature:
             value = minimum
     
         return Temperature(value, target_unit)
+
+     # The string representations
+    def __repr__(self) -> str:
+        """Returns an unambiguous representation of the object"""
+        return f"Temperature({self.value}, '{self.unit}')"
+    
+    def __str__(self) -> str:
+        """Returns a human-readable string formatted to 2 decimal places"""
+        if self.unit == "K":
+            return f"{self.value:.2f} K" 
+    
+        return f"{self.value:.2f} °{self.unit}"
         
