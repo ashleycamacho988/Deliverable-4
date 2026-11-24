@@ -3,3 +3,24 @@ from __future__ import annotations
 
 from math import gcd
 from types import NotImplementedType
+
+
+class Fraction:
+    """Represents fractions with integer numerators and denominators"""
+    def __init__(self, numerator: int, denominator: int) -> None:
+        """Initialises a fraction with a positive denominator"""
+
+        # Checks if the numerator and denominator are integers
+        if type(numerator) is not int or type(denominator) is not int:
+            raise TypeError("Numerator and denominator must both be integers")
+
+        # Checks if the denominator is positive
+        if denominator <= 0:
+            raise ValueError("Denominator should strictly be positive")
+
+        # Finds the greatest common divisor 
+        divisor = gcd(numerator, denominator)
+
+        # Stores the simplified fraction
+        self._numerator = numerator // divisor
+        self._denominator = denominator // divisor
