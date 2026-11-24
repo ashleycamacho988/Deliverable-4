@@ -24,3 +24,14 @@ class Fraction:
         # Stores the simplified fraction
         self._numerator = numerator // divisor
         self._denominator = denominator // divisor
+
+    # The read-only attributes
+    @property
+    def numerator(self) -> int:
+        """Returns the numerator of the fraction"""
+        return self._numerator
+        
+    @property
+    def denominator(self) -> int:
+        """Returns the denominator of the fraction"""
+        return self._denominator
