@@ -66,4 +66,45 @@ class Fraction:
         
         return Fraction(numerator, denominator)
 
+    # The comparison methods
+    def __eq__(self, other: object) -> bool | NotImplementedType:
+        """Checks if 2 fractions are equal"""
+        if not isinstance(other, Fraction):
+            return NotImplemented
+
+        return (self.numerator * other.denominator == other.numerator * self.denominator)
+     
+    def __ne__(self, other: object) -> bool | NotImplementedType:
+        """Checks if 2 fractions are not equal"""
+        if not isinstance(other, Fraction):
+            return NotImplemented
     
+        return not self == other
+    
+    def __lt__(self, other: object) -> bool | NotImplementedType:
+        """Checks if the fraction is smaller than another"""
+        if not isinstance(other, Fraction):
+            return NotImplemented
+    
+        return (self.numerator * other.denominator < other.numerator * self.denominator)
+    
+    def __le__(self, other: object) -> bool | NotImplementedType:
+        """Checks if the fraction is smaller than or equal to another"""
+        if not isinstance(other, Fraction):
+            return NotImplemented
+    
+        return self < other or self == other
+    
+    def __gt__(self, other: object) -> bool | NotImplementedType:
+        """Checks if the fraction is greater than another"""
+        if not isinstance(other, Fraction):
+            return NotImplemented
+    
+        return (self.numerator * other.denominator > other.numerator * self.denominator)
+    
+    def __ge__(self, other: object) -> bool | NotImplementedType:
+        """Checks if the fraction is greater than or equal to another"""
+        if not isinstance(other, Fraction):
+            return NotImplemented
+    
+        return self > other or self == other
