@@ -148,17 +148,17 @@ class Temperature:
     
         return self < other or self == other
     
-    def __ht__(self, other: object) -> bool | NotImplementedType:
+    def __gt__(self, other: object) -> bool | NotImplementedType:
         """Checks if the temperature is higher than another"""
         if not isinstance(other, Temperature):
             return NotImplemented
     
         return self.to_kelvin() > other.to_kelvin() and self != other 
     
-    def __he__(self, other: object) -> bool | NotImplementedType:
+    def __ge__(self, other: object) -> bool | NotImplementedType:
         """Checks if the temperature is higher than or equal to another"""
         if not isinstance(other, Temperature):
             return NotImplemented
     
-        return self > other or self == other
+        74return self > other or self == other
         
