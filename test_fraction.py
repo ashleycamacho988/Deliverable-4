@@ -136,3 +136,24 @@ def test_invalid_arith(method: str) -> None:
     assert getattr(frac, method)(2) is NotImplemented
 
 
+# Formatting
+@pytest.mark.parametrize(
+    "numerator, denominator, expected",
+    [
+        (1, 2, "1/2"),
+        (6, 8, "3/4"),
+        (-1, 5, "-1/5")
+    ]
+)
+def test_str(numerator: int, denominator: int, expected: str) -> None:
+    """Tests the human-readable string output"""
+    assert str(Fraction(numerator, denominator)) == expected
+
+def test_repr() -> None:
+    """Tests the unambiguous string output"""
+    frac1 = Fraction(6, 8)
+    frac2 = Fraction(-1, 5)
+
+    assert repr(frac1) == "Fraction(3, 4)"
+    assert repr(frac2) == "Fraction(-1, 5)"
+    
