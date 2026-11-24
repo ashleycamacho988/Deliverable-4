@@ -113,3 +113,20 @@ def test_convert_to() -> None:
     assert converted.value == pytest.approx(77.0, abs=TOLERANCE)
     assert original.unit == "C"
     assert original.value == 25.0
+
+
+# Round-trip conversions
+@pytest.mark.parametrize(
+    "value",
+    [-273.15, -40.0, 0.0, 37.0, 100.0]
+)
+def test_round_trip(value: float) -> None:
+    """Tests a round-trip conversion from Celsius back to Celsius"""
+    original = Temperature(value, "C")
+    converted = (original.convert_to("F").convert_to("K").convert_to("C"))
+
+    assert converted == original
+    assert converted.unit == original.unit
+    assert converted.value == pytest.approx(original.value, abs=TOLERANCE, rel=0.0)
+
+    
