@@ -160,5 +160,5 @@ class Temperature:
         if not isinstance(other, Temperature):
             return NotImplemented
     
-        74return self > other or self == other
+        return self > other or self == other
         
