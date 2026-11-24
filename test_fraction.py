@@ -39,3 +39,27 @@ def test_read_onlys() -> None:
     with pytest.raises(AttributeError):
         frac.denominator = 6
 
+
+# Validation
+@pytest.mark.parametrize(
+    "numerator, denominator",
+    [
+        (1.5, 2),
+        (1, 2.5),
+        ("1", 2),
+        (1, "2"),
+        (True, 2)
+    ]
+)
+def test_invalids(numerator: object, denominator: object) -> None:
+    """Tests that non-integer values raise TypeError"""
+    with pytest.raises(TypeError):
+        Fraction(numerator, denominator)
+
+@pytest.mark.parametrize("denominator", [0, -1, -5])
+def test_invalid_den(denominator: int) -> None:
+    """Tests that non-positive denominators raise ValueError"""
+    with pytest.raises(ValueError):
+        Fraction(1, denominator)
+
+
