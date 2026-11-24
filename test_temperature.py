@@ -129,4 +129,56 @@ def test_round_trip(value: float) -> None:
     assert converted.unit == original.unit
     assert converted.value == pytest.approx(original.value, abs=TOLERANCE, rel=0.0)
 
-    
+
+# Cross-unit comparisons
+def test_eq() -> None:
+    """Tests equality between temperatures with different units"""
+    assert Temperature(0.0, "C") == Temperature(32.0, "F")
+    assert Temperature(0.0, "C") == Temperature(273.15, "K")
+
+def test_ne() -> None:
+    """Tests inequality between different temperatures"""
+    assert Temperature(25.0, "C") != Temperature(32.0, "F")
+
+def test_lt() -> None:
+    """Tests the lower-than comparison"""
+    assert Temperature(0.0, "C") < Temperature(98.6, "F")
+    assert not Temperature(0.0, "C") < Temperature(32.0, "F")
+
+def test_le() -> None:
+    """Tests the lower-than-or-equal-to comparison"""
+    assert Temperature(0.0, "C") <= Temperature(32.0, "F")
+    assert Temperature(0.0, "C") <= Temperature(300.0, "K")
+
+def test_gt() -> None:
+    """Tests the higher-than comparison"""
+    assert Temperature(100.0, "C") > Temperature(32.0, "F")
+    assert not Temperature(0.0, "C") > Temperature(32.0, "F")
+
+def test_ge() -> None:
+    """Tests the higher-than-or-equal comparison"""
+    assert Temperature(100.0, "C") >= Temperature(350.15, "K")
+    assert Temperature(100.0, "C") >= Temperature(32.0, "F")
+    assert Temperature(0.0, "C") >= Temperature(32.0, "F")
+
+def test_tolerance() -> None:
+    """Tests comparisons within the floating-point tolerance"""
+    temp1 = Temperature(25.0, "C")
+    temp2 = Temperature(25.0 + 1e-10, "C")
+    temp3 = Temperature(25.0 + 1e-8, "C")
+
+    assert temp1 == temp2
+    assert not temp1 < temp2
+    assert not temp1 > temp2
+    assert temp1 != temp3
+    assert temp1 < temp3
+
+@pytest.mark.parametrize(
+    "method",
+    ["__eq__", "__ne__", "__lt__", "__le__", "__gt__", "__ge__"]
+)
+def test_non_temp(method: str) -> None:
+    """Tests comparisons with non-Temperature objects"""
+    temp = Temperature(25.0, "C")
+
+    assert getattr(temp, method)(25) is NotImplemented
