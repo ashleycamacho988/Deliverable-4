@@ -97,7 +97,7 @@ class Temperature:
         # Prevents rounding errors below absolute zero
         if isclose(
             value, minimum, rel_tol=0.0, abs_tol=self.TOLERANCE
-            ) and value < minimum:
+        ) and value < minimum:
             value = minimum
     
         return Temperature(value, target_unit)
