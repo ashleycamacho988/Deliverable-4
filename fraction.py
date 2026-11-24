@@ -44,3 +44,26 @@ class Fraction:
     def __str__(self) -> str:
         """Returns a human-readable string of the fraction"""
         return f"{self.numerator}/{self.denominator}"
+
+    # The arithmetic methods 
+    def __add__(self, other: object) -> Fraction | NotImplementedType:
+        """Adds 2 fractions"""
+        if not isinstance(other, Fraction):
+            return NotImplemented
+
+        numerator = (self.numerator * other.denominator + other.numerator * self.denominator)
+        denominator = self.denominator * other.denominator
+
+        return Fraction(numerator, denominator)
+
+    def __sub__(self, other: object) -> Fraction | NotImplementedType:
+        """Subtracts one fraction from another"""
+        if not isinstance(other, Fraction):
+            return NotImplemented
+        
+        numerator = (self.numerator * other.denominator - other.numerator * self.denominator)
+        denominator = self.denominator * other.denominator
+        
+        return Fraction(numerator, denominator)
+
+    
