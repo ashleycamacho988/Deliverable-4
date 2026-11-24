@@ -46,30 +46,30 @@ class Temperature:
     # The conversion methods
     def to_celsius(self) -> float:
         """Converts the temperature to Celsius"""
-        if self.unit == "K": # From Kelvin
+        if self.unit == "K":  # From Kelvin
             return self.value - 273.15
     
-        if self.unit == "F": # From Fahrenheit
+        if self.unit == "F":  # From Fahrenheit
             return (self.value - 32) * 5 / 9
     
         return self.value
     
     def to_fahrenheit(self) -> float:
         """Converts the temperature to Fahrenheit"""
-        if self.unit == "C": # From Celsius
+        if self.unit == "C":  # From Celsius
             return self.value * 9 / 5 + 32
     
-        if self.unit == "K": # From Kelvin
+        if self.unit == "K":  # From Kelvin
             return (self.value - 273.15) * 9 / 5 + 32
     
         return self.value
     
     def to_kelvin(self) -> float:
         """Converts the temperature to Kelvin"""
-        if self.unit == "C": # From Celsius
+        if self.unit == "C":  # From Celsius
             return self.value + 273.15
     
-        if self.unit == "F": # From Fahrenheit
+        if self.unit == "F":  # From Fahrenheit
             return (self.value - 32) * 5 / 9 + 273.15
     
         return self.value
