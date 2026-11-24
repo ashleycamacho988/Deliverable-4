@@ -11,7 +11,9 @@ def test_default_unit() -> None:
     """Tests that Celsius is the default unit"""
     temp = Temperature(25)
 
+    # Checks the default temperature value
     assert temp.value == 25.0
+    # Checks that Celsius is the default unit
     assert temp.unit == "C"
 
 @pytest.mark.parametrize(
@@ -29,12 +31,14 @@ def test_case_insensitive(unit: str, expected: str) -> None:
     """Tests that lowercase and uppercase units are allowed"""
     temp = Temperature(25, unit)
 
+    # Checks that the unit is stored in uppercase
     assert temp.unit == expected
 
 def test_read_onlys() -> None:
     """Tests that the temperature attributes are read-only"""
     temp = Temperature(25, "C")
 
+    # Checks that the read-only attributes can't be changed
     with pytest.raises(AttributeError):
         temp.value = 30
 
@@ -46,6 +50,7 @@ def test_read_onlys() -> None:
 @pytest.mark.parametrize("unit", ["X", "ABC", "", "Kelvin"])
 def test_invalid_unit(unit: str) -> None:
     """Tests that invalid units raises ValueError"""
+    # Checks that invalid inputs raises an error
     with pytest.raises(ValueError):
         Temperature(25, unit)
 
@@ -88,6 +93,7 @@ def test_convers(celsius: float, fahrenheit: float, kelvin: float) -> None:
     temp_k = Temperature(kelvin, "K")
 
     # Test conversions from Celsius
+    # Checks the results witin the tolerance
     assert temp_c.to_celsius() == pytest.approx(celsius, abs=TOLERANCE, rel=0.0)
     assert temp_c.to_fahrenheit() == pytest.approx(fahrenheit, abs=TOLERANCE, rel=0.0)
     assert temp_c.to_kelvin() == pytest.approx(kelvin, abs=TOLERANCE, rel=0.0)
@@ -107,11 +113,11 @@ def test_convert_to() -> None:
     original = Temperature(25, "C")
     converted = original.convert_to("f")
 
-    assert isinstance(converted, Temperature)
-    assert converted is not original
-    assert converted.unit == "F"
-    assert converted.value == pytest.approx(77.0, abs=TOLERANCE)
-    assert original.unit == "C"
+    assert isinstance(converted, Temperature)  # Checks that conversion returns a Temperature object
+    assert converted is not original  # Conversion creates a new object
+    assert converted.unit == "F"  # The actual result matches with the expected one
+    assert converted.value == pytest.approx(77.0, abs=TOLERANCE) 
+    assert original.unit == "C"  
     assert original.value == 25.0
 
 
@@ -125,7 +131,7 @@ def test_round_trip(value: float) -> None:
     original = Temperature(value, "C")
     converted = (original.convert_to("F").convert_to("K").convert_to("C"))
 
-    assert converted == original
+    assert converted == original  # Checks that round-trip conversion preserves temperature
     assert converted.unit == original.unit
     assert converted.value == pytest.approx(original.value, abs=TOLERANCE, rel=0.0)
 
@@ -138,10 +144,12 @@ def test_eq() -> None:
 
 def test_ne() -> None:
     """Tests inequality between different temperatures"""
+    # Checks that the 2 values are different
     assert Temperature(25.0, "C") != Temperature(32.0, "F")
 
 def test_lt() -> None:
     """Tests the lower-than comparison"""
+    # Checks the lower-than comparisons
     assert Temperature(0.0, "C") < Temperature(98.6, "F")
     assert not Temperature(0.0, "C") < Temperature(32.0, "F")
 
@@ -167,10 +175,10 @@ def test_tolerance() -> None:
     temp2 = Temperature(25.0 + 1e-10, "C")
     temp3 = Temperature(25.0 + 1e-8, "C")
 
-    assert temp1 == temp2
-    assert not temp1 < temp2
-    assert not temp1 > temp2
-    assert temp1 != temp3
+    assert temp1 == temp2  # Checks that the actual result matches the expected one
+    assert not temp1 < temp2  # The lower-than comparison
+    assert not temp1 > temp2  # The higher-than comparison
+    assert temp1 != temp3 
     assert temp1 < temp3
 
 @pytest.mark.parametrize(
@@ -181,6 +189,7 @@ def test_non_temp(method: str) -> None:
     """Tests comparisons with non-Temperature objects"""
     temp = Temperature(25.0, "C")
 
+    # Checks that comparisons with other types are invalid
     assert getattr(temp, method)(25) is NotImplemented
 
 
@@ -195,6 +204,7 @@ def test_non_temp(method: str) -> None:
 )
 def test_str(value: float, unit: str, expected: str) -> None:
     """Tests the human-readable string output"""
+    # Checks the temperature format
     assert str(Temperature(value, unit)) == expected
 
 def test_repr() -> None:
@@ -202,3 +212,4 @@ def test_repr() -> None:
     temp = Temperature(25.0, "C")
 
     assert repr(temp) == "Temperature(25.0, 'C')"
+    
