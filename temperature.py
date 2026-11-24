@@ -65,7 +65,7 @@ class Temperature:
         return self.value
     
     def to_kelvin(self) -> float:
-        """Converts the temperature to Kevin"""
+        """Converts the temperature to Kelvin"""
         if self.unit == "C": # From Celsius
             return self.value + 273.15
     
@@ -75,7 +75,7 @@ class Temperature:
         return self.value
     
     def convert_to(self, target_unit: str) -> "Temperature":
-        """Returns a new temperature object in the the target unit"""
+        """Returns a new temperature object in the target unit"""
         target_unit = target_unit.upper()
     
         # Converts the temperature to the requested unit
