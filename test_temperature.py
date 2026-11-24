@@ -182,3 +182,23 @@ def test_non_temp(method: str) -> None:
     temp = Temperature(25.0, "C")
 
     assert getattr(temp, method)(25) is NotImplemented
+
+
+# Formatting
+@pytest.mark.parametrize(
+    "value, unit, expected",
+    [
+        (25.0, "C", "25.00 °C"),
+        (98.6, "F", "98.60 °F"),
+        (273.15, "K", "273.15 K")
+    ]
+)
+def test_str(value: float, unit: str, expected: str) -> None:
+    """Tests the human-readable string output"""
+    assert str(Temperature(value, unit)) == expected
+
+def test_repr() -> None:
+    """Tests the unambiguous string output"""
+    temp = Temperature(25.0, "C")
+
+    assert repr(temp) == "Temperature(25.0, 'C')"
