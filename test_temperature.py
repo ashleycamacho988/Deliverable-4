@@ -9,10 +9,10 @@ TOLERANCE = 1e-9
 # Initialisation
 def test_default_unit() -> None:
     """Tests that Celsius is the default unit"""
-    temperature = Temperature(25)
+    temp = Temperature(25)
 
-    assert temperature.value == 25.0
-    assert temperature.unit == "C"
+    assert temp.value == 25.0
+    assert temp.unit == "C"
 
 @pytest.mark.parametrize(
     "unit, expected",
@@ -27,19 +27,19 @@ def test_default_unit() -> None:
 )
 def test_case_insensitive(unit: str, expected: str) -> None:
     """Tests that lowercase and uppercase units are allowed"""
-    temperature = Temperature(25, unit)
+    temp = Temperature(25, unit)
 
-    assert temperature.unit == expected
+    assert temp.unit == expected
 
 def test_read_onlys() -> None:
     """Tests that the temperature attributes are read-only"""
-    temperature = Temperature(25, "C")
+    temp = Temperature(25, "C")
 
     with pytest.raises(AttributeError):
-        temperature.value = 30
+        temp.value = 30
 
     with pytest.raises(AttributeError):
-        temperature.unit = "F"
+        temp.unit = "F"
 
 
 # Validation
@@ -64,10 +64,10 @@ def test_below_abs_zero(value: float, unit: str) -> None:
 
 def test_invalid_targets() -> None:
     """Tests that invalid conversion units raises ValueError"""
-    temperature = Temperature(25, "C")
+    temp = Temperature(25, "C")
 
     with pytest.raises(ValueError):
-        temperature.convert_to("X")
+        temp.convert_to("X")
 
 
 # Conversions
