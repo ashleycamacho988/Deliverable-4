@@ -40,3 +40,31 @@ def test_read_onlys() -> None:
 
     with pytest.raises(AttributeError):
         temperature.unit = "F"
+
+
+# Validation
+@pytest.mark.parametrize("unit", ["X", "ABC", "", "Kelvin"])
+def test_invalid_unit(unit: str) -> None:
+    """Tests that invalid units raises ValueError"""
+    with pytest.raises(ValueError):
+        Temperature(25, unit)
+
+@pytest.mark.parametrize(
+    "value, unit",
+    [
+        (-274, "C"),
+        (-460, "F"),
+        (-1, "K")
+    ]
+)
+def test_below_abs_zero(value: float, unit: str) -> None:
+    """Tests that temperatures below absolute zero are rejected"""
+    with pytest.raises(ValueError):
+        Temperature(value, unit)
+
+def test_invalid_targets() -> None:
+    """Tests that invalid conversion units raises ValueError"""
+    temperature = Temperature(25, "C")
+
+    with pytest.raises(ValueError):
+        temperature.convert_to("X")
