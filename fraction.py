@@ -35,3 +35,12 @@ class Fraction:
     def denominator(self) -> int:
         """Returns the denominator of the fraction"""
         return self._denominator
+
+    # The string representations
+    def __repr__(self) -> str:
+        """Returns an unambiguous representation of the fraction"""
+        return f"Fraction({self.numerator}, {self.denominator})"
+    
+    def __str__(self) -> str:
+        """Returns a human-readable string of the fraction"""
+        return f"{self.numerator}/{self.denominator}"
