@@ -63,3 +63,28 @@ def test_invalid_den(denominator: int) -> None:
         Fraction(1, denominator)
 
 
+# Arithmetic operations
+@pytest.mark.parametrize(
+    "frac1, frac2, expected",
+    [
+        (Fraction(1, 2), Fraction(3, 4), Fraction(5, 4)),
+        (Fraction(1, 2), Fraction(1, 2), Fraction(1, 1)) 
+    ]
+)
+def test_add(frac1: Fraction, frac2: Fraction, expected: Fraction) -> None:
+    """Tests addition between fractions"""
+    assert frac1 + frac2 == expected 
+
+@pytest.mark.parametrize(
+    "frac1, frac2, expected",
+    [
+        (Fraction(3, 4), Fraction(1, 2), Fraction(1, 4)),
+        (Fraction(1, 2), Fraction(3, 4), Fraction(-1, 4)),
+        (Fraction(1, 2), Fraction(1, 2), Fraction(0, 1)) 
+    ]
+)
+def test_sub(frac1: Fraction, frac2: Fraction, expected: Fraction) -> None:
+    """Tests subtraction between fractions"""
+    assert frac1 - frac2 == expected 
+
+
