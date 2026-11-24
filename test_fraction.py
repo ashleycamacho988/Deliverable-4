@@ -88,3 +88,51 @@ def test_sub(frac1: Fraction, frac2: Fraction, expected: Fraction) -> None:
     assert frac1 - frac2 == expected 
 
 
+# Comparisons
+def test_eq() -> None:
+    """Tests equality between fractions"""
+    assert Fraction(1, 2) == Fraction(2, 4)
+    assert Fraction(3, 4) == Fraction(6, 8)
+
+def test_ne() -> None:
+    """Tests inequality between fractions"""
+    assert Fraction(1, 2) != Fraction(3, 4)
+
+def test_lt() -> None:
+    """Tests the smaller-than comparison"""
+    assert Fraction(1, 3) < Fraction(1, 2)
+    assert not Fraction(3, 4) < Fraction(6, 8)
+
+def test_le() -> None:
+    """Tests the smaller-than-or-equal-to comparison"""
+    assert Fraction(1, 3) <= Fraction(1, 2)
+    assert Fraction(1, 2) <= Fraction(2, 4)
+
+def test_gt() -> None:
+    """Tests the greater-than comparison"""
+    assert Fraction(3, 4) > Fraction(1, 2)
+    assert not Fraction(1, 2) > Fraction(2, 4)
+
+def test_ge() -> None:
+    """Tests the greater-than-or-equal comparison"""
+    assert Fraction(3, 4) >= Fraction(1, 2)
+    assert Fraction(1, 2) >= Fraction(2, 4)
+    
+@pytest.mark.parametrize(
+    "method",
+    ["__eq__", "__ne__", "__lt__", "__le__", "__gt__", "__ge__"]
+)
+def test_non_frac_comparison(method: str) -> None:
+    """Tests comparisons with non-fractions"""
+    frac = Fraction(1, 2)
+
+    assert getattr(frac, method)(2) is NotImplemented
+
+@pytest.mark.parametrize("method", ["__add__", "__sub__"])
+def test_invalid_arith(method: str) -> None:
+    """Tests arithmetic operations with non-fractions"""
+    frac = Fraction(1, 2)
+
+    assert getattr(frac, method)(2) is NotImplemented
+
+
