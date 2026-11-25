@@ -1,0 +1,65 @@
+* f522fc3 - Alyssa Camacho, 14 minutes ago : added the output code from testing
+* 8e17fa7 - Alyssa Camacho, 15 minutes ago : added validation
+* d57ba18 - Alyssa Camacho, 18 minutes ago : added comparisons and string reps
+* 8fb4edc - Alyssa Camacho, 20 minutes ago : added arithmetic operations
+* fef19b3 - Alyssa Camacho, 21 minutes ago : minor change in spacing
+* a5018c7 - Alyssa Camacho, 21 minutes ago : added fraction simplification
+* fb2f6dc - Alyssa Camacho, 23 minutes ago : added the output code from testing
+* 4015116 - Alyssa Camacho, 26 minutes ago : added validation
+* dff54a3 - Alyssa Camacho, 27 minutes ago : added comparisons and string reps
+* 803e4e6 - Alyssa Camacho, 28 minutes ago : added the temperature conversions
+* ee86906 - Alyssa Camacho, 3 hours ago : added imports
+* f89f7da - Alyssa Camacho, 3 hours ago : added imports
+* 4653499 - Alyssa Camacho, 3 hours ago : added information on our venv
+*   e2a88ae - Alyssa Camacho, 4 hours ago : Merge branch 'main' of https://github.com/ashleycamacho988/Deliverable-4
+|\  
+| * 400855b - ashleycamacho988, 5 hours ago : Update README with execution instructions
+* | 873be0e - Alyssa Camacho, 4 hours ago : updated the readme file
+|/  
+* d71888e - Alyssa Camacho, 21 hours ago : added comments
+* a723933 - Alyssa Camacho, 21 hours ago : added comments
+* 580df63 - Alyssa Camacho, 22 hours ago : added comments
+* 6071af0 - Alyssa Camacho, 22 hours ago : added comments
+* 2f8f77d - Alyssa Camacho, 22 hours ago : added the formatting tests
+* 0b7b3fd - Alyssa Camacho, 22 hours ago : added the comparisons tests
+* e7e5ba6 - Alyssa Camacho, 22 hours ago : added the arithmetic tests
+* 5826054 - Alyssa Camacho, 22 hours ago : added the validation tests
+* f66fc26 - Alyssa Camacho, 22 hours ago : added the initialisation tests
+* c893462 - Alyssa Camacho, 22 hours ago : added imports
+* c7b7608 - Alyssa Camacho, 22 hours ago : added the comparison methods
+* f22d53f - Alyssa Camacho, 22 hours ago : added the arithmetic methods
+* 3b84527 - Alyssa Camacho, 22 hours ago : added the string reps
+* fd253de - Alyssa Camacho, 22 hours ago : added the read-only attributes
+* 8f23772 - Alyssa Camacho, 22 hours ago : added initialisation
+* 0cf849f - Alyssa Camacho, 22 hours ago : added imports
+* 7196090 - Alyssa Camacho, 2 days ago : added file
+* 56fc35b - Alyssa Camacho, 2 days ago : added file
+* 4f6489f - Alyssa Camacho, 2 days ago : minor code changes
+* 77ee6eb - Alyssa Camacho, 2 days ago : added the formatting tests
+* 9fbb82d - Alyssa Camacho, 2 days ago : added the cross-unit comparisons tests
+* aeb8f48 - Alyssa Camacho, 2 days ago : added the round-trip conversions tests
+* c26bf19 - Alyssa Camacho, 2 days ago : added the conversions tests
+* c80df38 - Alyssa Camacho, 2 days ago : added the validation tests
+* afcbd13 - Alyssa Camacho, 2 days ago : added the initialisation tests
+* b23c5bd - Alyssa Camacho, 2 days ago : added the tolerance
+* 158fa3f - Alyssa Camacho, 2 days ago : minor code change
+* edaa82e - Alyssa Camacho, 2 days ago : minor formatting changes
+* 4ee1e32 - Alyssa Camacho, 2 days ago : fixed grammar mistakes
+* 820ca49 - Alyssa Camacho, 2 days ago : fixed error
+* 3d0e04c - Alyssa Camacho, 2 days ago : changed names for the lasts 2 methods
+* ae8bc20 - Alyssa Camacho, 5 days ago : added imports
+* a9c180b - Alyssa Camacho, 5 days ago : added the rest of the comparison methods
+* 5ddefd8 - Alyssa Camacho, 5 days ago : added 3/6 comparison methods
+* ae28165 - Alyssa Camacho, 5 days ago : minor spelling mistake fixed
+* a91a279 - Alyssa Camacho, 5 days ago : added the string representations
+* 7491b83 - Alyssa Camacho, 5 days ago : added the conversion methods
+* 4819ee5 - Alyssa Camacho, 5 days ago : fixed error
+* 5c4bc53 - Alyssa Camacho, 5 days ago : added the read-only attributes
+* ed6af0a - Alyssa Camacho, 5 days ago : added the temperature class
+* 33c5ee1 - Alyssa Camacho, 5 days ago : added imports
+* 75b4345 - Alyssa Camacho, 5 days ago : added file
+* 752d18b - Alyssa Camacho, 5 days ago : added file
+* a96c6bf - Alyssa Camacho, 5 days ago : added venv
+* f257ddd - Alyssa Camacho, 5 days ago : added file
+* 78b69c1 - Alyssa Camacho, 5 days ago : added file
+* 859c1e8 - ashleycamacho988, 5 days ago : Initial commit
