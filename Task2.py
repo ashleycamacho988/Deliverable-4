@@ -17,3 +17,12 @@ print(f"Denominator: {frac1.denominator}")
 # A demonstration of addition and subtraction
 print(f"Addition: {frac1} + {frac2} = {frac1 + frac2}")
 print(f"Subtraction: {frac2} - {frac1} = {frac2 - frac1}")
+
+
+# A comparison of 2 fractions
+print(f"1/2 equals 2/4: {Fraction(1, 2) == Fraction(2, 4)}")
+print(f"1/3 is smaller than 1/2: {Fraction(1, 3) < Fraction(1, 2)}")
+
+# String representations
+print(str(frac2))
+print(repr(frac2))
