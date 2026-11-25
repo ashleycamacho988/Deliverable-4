@@ -35,3 +35,18 @@ for numerator, denominator in [(0.2, 2), (1, 0)]:
     except (TypeError, ValueError) as error:
         print(f"Fraction({numerator}, {denominator}): {error}")
 
+
+# A demonstration of the Fraction tests and their output
+test = subprocess.run(
+    [sys.executable, "-m", "pytest", "test_fraction.py", "-q"],
+    capture_output=True,
+    text=True,
+    check=False
+)
+
+print(test.stdout)
+
+if test.stderr:
+    print(test.stderr)
+assert test.returncode == 0, "The tests failed"
+
