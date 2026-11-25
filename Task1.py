@@ -31,3 +31,18 @@ for value, unit in [(30, "X"), (-279, "C")]:
         Temperature(value, unit)
     except ValueError as error:
         print(f"{value} {unit}: {error}")
+
+
+# A demonstration of the Temperature tests and their output
+test = subprocess.run(
+    [sys.executable, "-m", "pytest", "test_temperature.py", "-q"],
+    capture_output=True,
+    text=True,
+    check=False
+)
+
+print(test.stdout)
+
+if test.stderr:
+    print(test.stderr)
+assert test.returncode == 0, "The tests failed"
