@@ -3,3 +3,14 @@ import subprocess
 import sys
 
 from temperature import Temperature
+
+# A demonstration of temperature conversions
+temp = Temperature(30, "C")
+print(f"Original temperature: {temp}")
+print(f"In Fahrenheit: {temp.to_fahrenheit():.2f} °F")
+print(f"In Kelvin: {temp.to_kelvin()} K")
+
+# Creates a new object in Fahrenheit
+converted = temp.convert_to("F")
+print(f"Converted: {converted}")
+print(f"Original is unchanged: {temp}")
