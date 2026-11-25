@@ -14,3 +14,12 @@ print(f"In Kelvin: {temp.to_kelvin()} K")
 converted = temp.convert_to("F")
 print(f"Converted: {converted}")
 print(f"Original is unchanged: {temp}")
+
+
+# A comparison of equivalent temperatures in different units
+print(f"0 °C equals 32 °F: {Temperature(0, 'C') == Temperature(32, 'F')}") 
+print(f"100 °C is higher than 300 K: {Temperature(100, 'C') > Temperature(300, 'K')}")
+
+# String representations
+print(str(temp))
+print(repr(temp))
