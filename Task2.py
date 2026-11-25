@@ -26,3 +26,12 @@ print(f"1/3 is smaller than 1/2: {Fraction(1, 3) < Fraction(1, 2)}")
 # String representations
 print(str(frac2))
 print(repr(frac2))
+
+
+# A demonstration of invalid inputs
+for numerator, denominator in [(0.2, 2), (1, 0)]:
+    try:
+        Fraction(numerator, denominator)
+    except (TypeError, ValueError) as error:
+        print(f"Fraction({numerator}, {denominator}): {error}")
+
