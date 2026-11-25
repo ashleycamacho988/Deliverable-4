@@ -23,3 +23,11 @@ print(f"100 °C is higher than 300 K: {Temperature(100, 'C') > Temperature(300, 
 # String representations
 print(str(temp))
 print(repr(temp))
+
+
+# A demonstration of invalid units
+for value, unit in [(30, "X"), (-279, "C")]:
+    try:
+        Temperature(value, unit)
+    except ValueError as error:
+        print(f"{value} {unit}: {error}")
